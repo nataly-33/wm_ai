@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List, Any
 
 
 class DepartamentoDto(BaseModel):
@@ -8,9 +8,13 @@ class DepartamentoDto(BaseModel):
 
 
 class DiagramaRequest(BaseModel):
-    prompt: str
-    departamentos: list[DepartamentoDto]
+    prompt: Optional[str] = None
+    descripcion: Optional[str] = None
+    departamentos: List[DepartamentoDto] = []
     politicaId: Optional[str] = None
+
+    def get_texto(self) -> str:
+        return self.prompt or self.descripcion or ""
 
 
 class MetricasNodoDto(BaseModel):
@@ -25,9 +29,9 @@ class MetricasNodoDto(BaseModel):
 
 class AnalisisRequest(BaseModel):
     politicaId: str
-    metricas: list[MetricasNodoDto]
+    metricas: Optional[List[Any]] = []
 
 
 class FormularioRequest(BaseModel):
     descripcion: str
-    nombreNodo: str
+    nombreNodo: Optional[str] = ""
