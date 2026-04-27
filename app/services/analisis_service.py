@@ -23,7 +23,7 @@ from datetime import datetime
 
 logger = logging.getLogger(__name__)
 MODELO_PATH = "modelo_cuello_botella.pkl"
-N_MUESTRAS = 1_000_000
+N_MUESTRAS = 200_000
 
 FEATURES = [
     "tiempo_promedio_minutos",

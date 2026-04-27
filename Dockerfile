@@ -14,7 +14,9 @@ RUN python -m spacy download es_core_news_sm
 
 COPY . .
 
-RUN python train_model.py
+# Si el .pkl ya viene en el repo (recomendado) este paso no hace nada.
+# Si no existe, lo entrena con 200K muestras (~2 min, ~350MB RAM).
+RUN [ -f modelo_cuello_botella.pkl ] && echo "Modelo pre-entrenado detectado, omitiendo entrenamiento." || python train_model.py
 
 EXPOSE 8001
 

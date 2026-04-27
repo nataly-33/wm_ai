@@ -6,6 +6,6 @@ venv/
 
 __pycache__/
 
-*.pkl
+# modelo_cuello_botella.pkl se incluye en el repo (necesario para deploy en Render)
 *.pyc
 *.log
